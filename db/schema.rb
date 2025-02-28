@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_28_132238) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_28_133527) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
   create_table "event_store_events", force: :cascade do |t|
-    t.string "event_id", limit: 36, null: false
+    t.uuid "event_id", null: false
     t.string "event_type", null: false
-    t.binary "metadata"
-    t.binary "data", null: false
+    t.jsonb "metadata"
+    t.jsonb "data", null: false
     t.datetime "created_at", null: false
     t.datetime "valid_at"
     t.index ["created_at"], name: "index_event_store_events_on_created_at"
@@ -30,7 +30,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_28_132238) do
   create_table "event_store_events_in_streams", force: :cascade do |t|
     t.string "stream", null: false
     t.integer "position"
-    t.string "event_id", limit: 36, null: false
+    t.uuid "event_id", null: false
     t.datetime "created_at", null: false
     t.index ["created_at"], name: "index_event_store_events_in_streams_on_created_at"
     t.index ["event_id"], name: "index_event_store_events_in_streams_on_event_id"
