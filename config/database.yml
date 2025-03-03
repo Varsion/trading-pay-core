@@ -15,7 +15,7 @@ default: &default
 
 development:
   <<: *default
-  database: trading_system_development
+  database: trading_pay_core_development
   port: 5433
 
 # Warning: The database defined as "test" will be erased and
@@ -23,21 +23,21 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: trading_system_test
+  database: trading_pay_core_test
 
 production:
   primary:
     <<: *default
-    database: trading_system_production
+    database: trading_pay_core_production
   cache:
     <<: *default
-    database: trading_system_production_cache
+    database: trading_pay_core_production_cache
     migrations_paths: db/cache_migrate
   queue:
     <<: *default
-    database: trading_system_production_queue
+    database: trading_pay_core_production_queue
     migrations_paths: db/queue_migrate
   cable:
     <<: *default
-    database: trading_system_production_cable
+    database: trading_pay_core_production_cable
     migrations_paths: db/cable_migrate
