@@ -1,0 +1,2 @@
+module Merchants::AuthHelper
+end
